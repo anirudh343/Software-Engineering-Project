@@ -15,8 +15,11 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
 
+
+
 public class MainActivity extends AppCompatActivity {
-    @Override
+    //@Override
+    public static int gradeLevel = 0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -57,16 +60,27 @@ public class MainActivity extends AppCompatActivity {
         createAnEducatorAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startActivity(new Intent(MainActivity.this, EducatorAccountCreation.class));
+                DataBase dataBaseHelper = new DataBase(MainActivity.this);
+                TextView edit = (TextView) findViewById(R.id.enterName);
+
+              //  User useradd = (username.getText().toString(), password.getText().toString(), 0, edit.getText().toString());
+              //  dataBaseHelper.addUser(false, edit.getText().toString());
             }
         });
 
         //Make "Learn" go to Student Homepage **Only if login successful (implement this functionality)**
         Button learn = (Button)findViewById(R.id.loginbutton);
 
+
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+              //  DataBase dataBaseHelper = new DataBase(MainActivity.this);
+
+                //dataBaseHelper.validateUser(username.getText().toString(), password.getText().toString(), false);
+                gradeLevel = 1;
                 startActivity(new Intent(MainActivity.this, StudentHomepage.class));
             }
         });

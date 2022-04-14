@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.List;
+
 public class MathQuiz extends AppCompatActivity {
 
     @Override
@@ -27,6 +29,14 @@ public class MathQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_quiz);
 
+
+
+        DataBase dataBaseHelper = new DataBase(MathQuiz.this);
+        List<question> returnList = dataBaseHelper.getrandQuestions(MainActivity.gradeLevel, "math");
+
+        TextView math = (TextView)findViewById(R.id.questionsMath);
+
+        math.setText(returnList.get(0).getQuestion());
 
 
 

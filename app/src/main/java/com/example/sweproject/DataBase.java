@@ -248,14 +248,14 @@ public class DataBase extends SQLiteOpenHelper {
 
 
     //Now returns 1 random question per standard
-    public List<question> getrandQuestions(String grade, String subject)
+    public List<question> getrandQuestions(int grade, String subject)
     {
         List<question> returnList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
         //look for all standards in the subject/grade
         String query = "SELECT DISTINCT STANDARD FROM QUESTION_TABLE WHERE " +
-                "GRADE == " + grade+ " AND SUBJECT == " + subject;
+                "GRADE == " + Integer.toString(grade)+ " AND SUBJECT == " + subject;
         Cursor cursor = db.rawQuery(query,null);
 
         //populate a list with all the standards in the subject/grade
