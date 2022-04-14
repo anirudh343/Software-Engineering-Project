@@ -71,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
         //Make "Manage" go to Educator Homepage **Only if login successful (implement this functionality)**
         Button manage = (Button)findViewById(R.id.educatorLoginButton);
 
