@@ -266,39 +266,32 @@ public class DataBase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         //look for all standards in the subject/grade
-        String query = "SELECT DISTINCT STANDARD FROM QUESTION_TABLE WHERE " +
-                "GRADE == " + Integer.toString(grade)+ " AND SUBJECT == " + subject;
+        String query = "SELECT * FROM QUESTION_TABLE ORDER BY random()";
         Cursor cursor = db.rawQuery(query,null);
 
         //populate a list with all the standards in the subject/grade
         List<String> applicable_standards = new ArrayList<String>();
         while(cursor.moveToNext()){
-            String std = cursor.getString(0);
-            applicable_standards.add(std);
-        }
+            if (cursor.getInt(2) == grade && cursor.getString(1).equals(subject)) {
 
-        //iterates over every desired standard, randomly selects 1 question for it. Adds it to return list
-        for(String std_toget : applicable_standards){
-            String std_query = "SELECT * from QUESTION_TABLE where STANDARD == " + std_toget
-                    + "ORDER BY random() LIMIT 1";
-            Cursor std_cursor = db.rawQuery(std_query, null);
+                int questionID = cursor.getInt(0);
+                String subject_toadd = cursor.getString(1);
+                int grade_toadd = cursor.getInt(2);
+                String question = cursor.getString(3);
+                String correct_answer = cursor.getString(4);
+                String wrong_answer1 = cursor.getString(5);
+                String wrong_answer2 = cursor.getString(6);
+                String wrong_answer3 = cursor.getString(7);
+                String standard = cursor.getString(8);
 
-            int questionID = std_cursor.getInt(0);
-            String subject_toadd = std_cursor.getString(1);
-            int grade_toadd = std_cursor.getInt(2);
-            String question = std_cursor.getString(3);
-            String correct_answer = std_cursor.getString(4);
-            String wrong_answer1 = std_cursor.getString(5);
-            String wrong_answer2 = std_cursor.getString(6);
-            String wrong_answer3 = std_cursor.getString(7);
-            String standard = std_cursor.getString(8);
+                question _question = new question(questionID, subject_toadd, grade_toadd, question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, standard);
+                returnList.add(_question);
 
-            question _question = new question(questionID, subject_toadd, grade_toadd, question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, standard);
-            returnList.add(_question);
-            std_cursor.close();
+                if (returnList.size() >= 10)
+                    break;
 
-            if (returnList.size() >= 10)
-                break;
+
+            }
         }
 
 
