@@ -56,7 +56,7 @@ public class DataBase extends SQLiteOpenHelper {
         db.execSQL(createPerformanceTableString);
 
 
-        String File_path = ""; //CHANGE ME!
+        String File_path = "/Users/meghan.ka/Downloads/Questions.csv"; //CHANGE ME!
 
         String line = "";
         String splitBy = ",";

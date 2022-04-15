@@ -11,6 +11,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
@@ -57,16 +58,15 @@ public class MainActivity extends AppCompatActivity {
         //Make "Create an Educator Account Button" go to an Educator Account Creation Screen
         Button createAnEducatorAccount = (Button)findViewById(R.id.createEducatorAccount);
 
+
         createAnEducatorAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                //change the page to educator account creation
                 startActivity(new Intent(MainActivity.this, EducatorAccountCreation.class));
-                DataBase dataBaseHelper = new DataBase(MainActivity.this);
-                TextView edit = (TextView) findViewById(R.id.enterName);
 
-              //  User useradd = (username.getText().toString(), password.getText().toString(), 0, edit.getText().toString());
-              //  dataBaseHelper.addUser(false, edit.getText().toString());
+
             }
         });
 
@@ -94,7 +94,16 @@ public class MainActivity extends AppCompatActivity {
         manage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, EducatorHomepage.class));
+
+
+                DataBase dataBaseHelper = new DataBase(MainActivity.this);
+
+                //this is causing an error
+                boolean check = dataBaseHelper.validateUser(username.getText().toString(), password.getText().toString(), false);
+
+                if (check) {
+                    startActivity(new Intent(MainActivity.this, EducatorHomepage.class));
+                }
             }
         });
 

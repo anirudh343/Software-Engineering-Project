@@ -94,7 +94,7 @@
         android:layout_below="@id/gradeLevelDropDown"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:text="CREATE"
@@ -102,13 +102,20 @@
 
     <EditText
         android:id="@+id/enterName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/setEducatorPassword"
-        android:layout_marginTop="9dp"
-        android:ems="10"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#30ffffff"
+        android:hint="Full Name"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:inputType="textPersonName"
-        android:text="Enter Your Name"
+        android:text=""
         tools:ignore="TouchTargetSizeCheck" />
 
 </RelativeLayout>

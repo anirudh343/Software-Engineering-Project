@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.google.android.material.button.MaterialButton;
 
 public class EducatorHomepage extends AppCompatActivity {
 
@@ -13,6 +17,8 @@ public class EducatorHomepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_educator_homepage);
+
+
 
 
 
