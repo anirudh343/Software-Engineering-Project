@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -138,15 +140,21 @@ public class DataBase extends SQLiteOpenHelper {
         String query;
 
         SQLiteDatabase db = this.getReadableDatabase();
-
+        String query1;
+        query1 = "SELECT * FROM TEACHER_TABLE";
+        Cursor cursor1 = db.rawQuery(query1,null);
+        while (cursor1.moveToNext()){
+            String temp = cursor1.getString(0);
+            Log.i("message", temp);
+        }
         if (stud_or_teach){
-            query = "SELECT * FROM TEACHER_TABLE WHERE " +
-                    "USERNAME == " + username+ " AND PASSWORD == " + password;
+            query = "SELECT 1 FROM TEACHER_TABLE WHERE " +
+                    "TEACHER_COLUMN_TEACHER_USERNAME = " + username+ " AND TEACHER_COLUMN_PASSWORD = " + password;
         }
         else {
 
             query = "SELECT * FROM STUDENT_TABLE WHERE " +
-                    "USERNAME == " + username+ " AND PASSWORD == " + password;
+                    "STUDENT_USERNAME = " + username+ " AND PASSWORD = " + password;
           }
 
         Cursor cursor = db.rawQuery(query,null);

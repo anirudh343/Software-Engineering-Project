@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -87,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        TextView edusername = (TextView) findViewById(R.id.educatorUsername);
+        TextView edpassword = (TextView) findViewById(R.id.educatorPassword);
 
         //Make "Manage" go to Educator Homepage **Only if login successful (implement this functionality)**
         Button manage = (Button)findViewById(R.id.educatorLoginButton);
@@ -99,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 DataBase dataBaseHelper = new DataBase(MainActivity.this);
 
                 //this is causing an error
-                boolean check = dataBaseHelper.validateUser(username.getText().toString(), password.getText().toString(), false);
+                boolean check = dataBaseHelper.validateUser(edusername.getText().toString(), edpassword.getText().toString(), true);
 
                 if (check) {
                     startActivity(new Intent(MainActivity.this, EducatorHomepage.class));
