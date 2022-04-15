@@ -135,34 +135,41 @@ public class DataBase extends SQLiteOpenHelper {
     }
 
     public boolean validateUser(String username, String password, boolean stud_or_teach){
-        //stud_or_teach == 1 if teacher, 0 if student
+        //stud_or_teach == true if teacher, false if student
         boolean valid = false;
         String query;
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String query1;
-        query1 = "SELECT * FROM TEACHER_TABLE";
-        Cursor cursor1 = db.rawQuery(query1,null);
-        while (cursor1.moveToNext()){
-            String temp = cursor1.getString(0);
-            Log.i("message", temp);
-        }
+
+        //String query1;
+        //query1 = "SELECT * FROM TEACHER_TABLE";
+        //Cursor cursor1 = db.rawQuery(query1,null);
+        //while (cursor1.moveToNext()){
+         //   String temp = cursor1.getString(0);
+        //    Log.i("message", temp);
+        //}
         if (stud_or_teach){
-            query = "SELECT 1 FROM TEACHER_TABLE WHERE " +
-                    "TEACHER_COLUMN_TEACHER_USERNAME = " + username+ " AND TEACHER_COLUMN_PASSWORD = " + password;
+            query = "SELECT * FROM TEACHER_TABLE";
         }
         else {
-
-            query = "SELECT * FROM STUDENT_TABLE WHERE " +
-                    "STUDENT_USERNAME = " + username+ " AND PASSWORD = " + password;
-          }
+            query = "SELECT * FROM STUDENT_TABLE";
+        }
 
         Cursor cursor = db.rawQuery(query,null);
 
-        //if there is anything in there, it means there is a valid match
-        if (cursor.getCount() > 0){
-            valid = true;
+        if (cursor.moveToFirst()){
+            do {
+                String uname = cursor.getString(0);
+                String pword = cursor.getString(1);
+                if (uname.equals(username) && pword.equals(password)){
+                    valid = true;
+                    break;
+                }
+            }while (cursor.moveToNext());
+
+
         }
+
         db.close();
         cursor.close();
 
