@@ -40,6 +40,7 @@ public class EducatorAccountCreation extends AppCompatActivity implements Adapte
                  Spinner gradeSpinner = (Spinner) findViewById(R.id.gradeLevelDropDown);
                  String grade = gradeSpinner.getSelectedItem().toString();
                  int gradeInt = Integer.parseInt(grade);
+                 MainActivity.gradeLevel = gradeInt;
 
                  //creating educator
                  User temp = new User(userN, userP, gradeInt, editT);

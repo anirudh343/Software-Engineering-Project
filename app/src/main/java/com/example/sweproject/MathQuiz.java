@@ -32,7 +32,7 @@ public class MathQuiz extends AppCompatActivity {
 
 
         DataBase dataBaseHelper = new DataBase(MathQuiz.this);
-        List<question> returnList = dataBaseHelper.getrandQuestions(MainActivity.gradeLevel, "math");
+        List<question> returnList = dataBaseHelper.getrandQuestions(MainActivity.gradeLevel, "Math");
 
         TextView math = (TextView)findViewById(R.id.questionsMath);
 
