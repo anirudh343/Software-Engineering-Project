@@ -267,7 +267,7 @@ public class DataBase extends SQLiteOpenHelper {
 
         //look for all standards in the subject/grade
         String query = "SELECT DISTINCT STANDARD FROM QUESTION_TABLE WHERE " +
-                "GRADE == " + Integer.toString(grade)+ " AND SUBJECT == " + subject;
+                "GRADE = " + Integer.toString(grade)+ " AND SUBJECT = " + subject;
         Cursor cursor = db.rawQuery(query,null);
 
         //populate a list with all the standards in the subject/grade
