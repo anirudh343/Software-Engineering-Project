@@ -8,6 +8,7 @@ public class User {
     private String actual_name;
 
     //for inserting students
+    //student actual name and teacher username
     public User(String username, String password, int grade, String teacher_user, String actual_name)
     {
         this.username = username;

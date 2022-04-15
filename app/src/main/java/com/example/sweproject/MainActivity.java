@@ -78,14 +78,18 @@ public class MainActivity extends AppCompatActivity {
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  DataBase dataBaseHelper = new DataBase(MainActivity.this);
+                DataBase dataBaseHelper = new DataBase(MainActivity.this);
 
-                //dataBaseHelper.validateUser(username.getText().toString(), password.getText().toString(), false);
-                gradeLevel = 1;
-                startActivity(new Intent(MainActivity.this, StudentHomepage.class));
+                boolean checkStudent = dataBaseHelper.validateUser(username.getText().toString(), password.getText().toString(), false);
+                if(checkStudent){
+                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, StudentHomepage.class));
+                }else{
+                    Toast.makeText(MainActivity.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
-
 
 
         TextView edusername = (TextView) findViewById(R.id.educatorUsername);
