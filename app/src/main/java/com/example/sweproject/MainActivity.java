@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check) {
                     startActivity(new Intent(MainActivity.this, EducatorHomepage.class));
                 }
+
             }
         });
 

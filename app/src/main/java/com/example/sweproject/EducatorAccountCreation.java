@@ -33,8 +33,8 @@ public class EducatorAccountCreation extends AppCompatActivity implements Adapte
                  DataBase dataBaseHelper = new DataBase(EducatorAccountCreation.this);
                  TextView edit = (TextView) findViewById(R.id.enterName); //get name from user input
                  String editT = edit.toString();
-                 TextView username = (TextView) findViewById(R.id.username);
-                 TextView password = (TextView) findViewById(R.id.password);
+                 TextView username = (TextView) findViewById(R.id.setEducatorUsername);
+                 TextView password = (TextView) findViewById(R.id.setEducatorPassword);
                  String userN = username.getText().toString();
                  String userP = password.getText().toString();
                  Spinner gradeSpinner = (Spinner) findViewById(R.id.gradeLevelDropDown);
@@ -49,7 +49,7 @@ public class EducatorAccountCreation extends AppCompatActivity implements Adapte
 
 
                  //once educator account is created, go back to log in page
-                startActivity(new Intent(EducatorAccountCreation.this, ManageStudentsPage.class));
+                startActivity(new Intent(EducatorAccountCreation.this, MainActivity.class));
             }
         });
 
