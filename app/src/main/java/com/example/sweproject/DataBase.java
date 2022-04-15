@@ -78,7 +78,7 @@ public class DataBase extends SQLiteOpenHelper {
                 cv.put(QUESTION_COLUMN_WRONG_ANSWER_2, question[5]);
                 cv.put(QUESTION_COLUMN_WRONG_ANSWER_3, question[6]);
                 cv.put(QUESTION_COLUMN_STANDARD, question[7]);
-                cv.put(QUESTION_COLUMN_GRADE, question[1]);
+                cv.put(QUESTION_COLUMN_GRADE, Integer.parseInt(question[1]));
                 long insert = db.insert(QUESTION_TABLE, null, cv);
             }
         }
@@ -137,9 +137,6 @@ public class DataBase extends SQLiteOpenHelper {
         boolean valid = false;
         String query;
 
-        //FIXME: not sure how the database calling should work for this function
-        //Would this. always call the correct one depending on what in the front end is calling it?
-        //should the db be determined below in the if/else?
         SQLiteDatabase db = this.getReadableDatabase();
 
         if (stud_or_teach){
