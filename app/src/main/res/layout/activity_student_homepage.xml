@@ -31,16 +31,4 @@
         android:text="Take Science Quiz"
         app:backgroundTint="@color/design_default_color_primary_variant" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/viewAdditionalResources"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="425dp"
-        android:layout_marginEnd="270dp"
-        android:layout_marginBottom="20dp"
-        android:text="View Additional Resources"
-        app:backgroundTint="@color/design_default_color_primary_variant" />
-
 </RelativeLayout>

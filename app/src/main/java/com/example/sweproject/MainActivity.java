@@ -5,18 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
 
+
+
 public class MainActivity extends AppCompatActivity {
-    @Override
+    //@Override
+    public static int gradeLevel = 0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -54,22 +59,41 @@ public class MainActivity extends AppCompatActivity {
         //Make "Create an Educator Account Button" go to an Educator Account Creation Screen
         Button createAnEducatorAccount = (Button)findViewById(R.id.createEducatorAccount);
 
+
         createAnEducatorAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //change the page to educator account creation
                 startActivity(new Intent(MainActivity.this, EducatorAccountCreation.class));
+
+
             }
         });
 
         //Make "Learn" go to Student Homepage **Only if login successful (implement this functionality)**
         Button learn = (Button)findViewById(R.id.loginbutton);
 
+
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, StudentHomepage.class));
+                DataBase dataBaseHelper = new DataBase(MainActivity.this);
+
+                gradeLevel = dataBaseHelper.validateUser(username.getText().toString(), password.getText().toString(), false);
+                if(gradeLevel != -1){
+                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, StudentHomepage.class));
+                }else{
+                    Toast.makeText(MainActivity.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
+
+
+        TextView edusername = (TextView) findViewById(R.id.educatorUsername);
+        TextView edpassword = (TextView) findViewById(R.id.educatorPassword);
 
         //Make "Manage" go to Educator Homepage **Only if login successful (implement this functionality)**
         Button manage = (Button)findViewById(R.id.educatorLoginButton);
@@ -77,7 +101,18 @@ public class MainActivity extends AppCompatActivity {
         manage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, EducatorHomepage.class));
+
+
+                DataBase dataBaseHelper = new DataBase(MainActivity.this);
+
+                //this is causing an error
+                //is it still?
+                int check = dataBaseHelper.validateUser(edusername.getText().toString(), edpassword.getText().toString(), true);
+
+                if (check > 0) {
+                    startActivity(new Intent(MainActivity.this, EducatorHomepage.class));
+                }
+
             }
         });
 
