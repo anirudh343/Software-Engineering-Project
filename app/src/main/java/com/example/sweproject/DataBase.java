@@ -82,6 +82,10 @@ public class DataBase extends SQLiteOpenHelper {
                 cv.put(QUESTION_COLUMN_STANDARD, question[7]);
                 cv.put(QUESTION_COLUMN_GRADE, Integer.parseInt(question[1]));
                 long insert = db.insert(QUESTION_TABLE, null, cv);
+
+                if (insert == -1){
+                    Log.i("message", "Insertion Error");
+                }
             }
         }
         catch (IOException e)
@@ -262,6 +266,7 @@ public class DataBase extends SQLiteOpenHelper {
     //Now returns 1 random question per standard
     public List<question> getrandQuestions(int grade, String subject)
     {
+
         List<question> returnList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -273,7 +278,8 @@ public class DataBase extends SQLiteOpenHelper {
         List<String> applicable_standards = new ArrayList<String>();
         while(cursor.moveToNext()){
             if (cursor.getInt(2) == grade && cursor.getString(1).equals(subject)) {
-
+                String inside = "question from table: " + cursor.getString(3);
+                Log.i("message", inside);
                 int questionID = cursor.getInt(0);
                 String subject_toadd = cursor.getString(1);
                 int grade_toadd = cursor.getInt(2);
@@ -286,6 +292,11 @@ public class DataBase extends SQLiteOpenHelper {
 
                 question _question = new question(questionID, subject_toadd, grade_toadd, question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, standard);
                 returnList.add(_question);
+                String qtext = _question.getQuestion();
+                Log.i("message", "question in list : " + qtext);
+
+                String temp = "size of retList: " + Integer.toString(returnList.size());
+                Log.i("message", temp);
 
                 if (returnList.size() >= 10)
                     break;
@@ -293,6 +304,7 @@ public class DataBase extends SQLiteOpenHelper {
 
             }
         }
+
 
 
         cursor.close();
