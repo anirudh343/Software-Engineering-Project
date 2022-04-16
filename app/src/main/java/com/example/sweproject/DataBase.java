@@ -138,9 +138,9 @@ public class DataBase extends SQLiteOpenHelper {
 
     }
 
-    public boolean validateUser(String username, String password, boolean stud_or_teach){
+    public int validateUser(String username, String password, boolean stud_or_teach){
         //stud_or_teach == true if teacher, false if student
-        boolean valid = false;
+        int ret = -1;
         String query;
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -161,12 +161,21 @@ public class DataBase extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(query,null);
 
+        int grade;
         if (cursor.moveToFirst()){
             do {
                 String uname = cursor.getString(0);
                 String pword = cursor.getString(1);
+
                 if (uname.equals(username) && pword.equals(password)){
-                    valid = true;
+
+                    if(!stud_or_teach){
+                        ret = cursor.getInt(3); //return the grade of student
+                    }
+                    else{
+                        ret = 3; //just some pos value to show teacher is correct
+                    }
+
                     break;
                 }
             }while (cursor.moveToNext());
@@ -177,7 +186,7 @@ public class DataBase extends SQLiteOpenHelper {
         db.close();
         cursor.close();
 
-        return valid;
+        return ret;
     }
 
     //add performance score if no score previously saved

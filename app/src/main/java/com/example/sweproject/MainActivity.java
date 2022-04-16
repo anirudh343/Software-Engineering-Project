@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 DataBase dataBaseHelper = new DataBase(MainActivity.this);
 
-                boolean checkStudent = dataBaseHelper.validateUser(username.getText().toString(), password.getText().toString(), false);
-                if(checkStudent){
+                gradeLevel = dataBaseHelper.validateUser(username.getText().toString(), password.getText().toString(), false);
+                if(gradeLevel != -1){
                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this, StudentHomepage.class));
                 }else{
@@ -106,9 +106,10 @@ public class MainActivity extends AppCompatActivity {
                 DataBase dataBaseHelper = new DataBase(MainActivity.this);
 
                 //this is causing an error
-                boolean check = dataBaseHelper.validateUser(edusername.getText().toString(), edpassword.getText().toString(), true);
+                //is it still?
+                int check = dataBaseHelper.validateUser(edusername.getText().toString(), edpassword.getText().toString(), true);
 
-                if (check) {
+                if (check > 0) {
                     startActivity(new Intent(MainActivity.this, EducatorHomepage.class));
                 }
 
