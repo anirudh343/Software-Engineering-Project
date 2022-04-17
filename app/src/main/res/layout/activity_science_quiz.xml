@@ -11,9 +11,16 @@
         android:layout_height="match_parent"
         android:background="@drawable/background"
         tools:context=".StudentHomepage" >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textManageStudents"
+            android:id="@+id/ScienceQuiz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -25,5 +32,98 @@
             android:textColor="@color/white"
             android:textSize="30dp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/questionS1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ScienceQuiz"
+            android:text="question1"
+            android:textColor="@color/white"
+            android:textSize="20dp"  />
+
+        <TextView
+            android:id="@+id/questionS2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionS1"
+            android:text="question1"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/questionS3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionS2"
+            android:text="question1"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/questionS4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionS3"
+            android:text="question1"
+            android:textColor="@color/white"
+            android:textSize="20dp"  />
+
+        <TextView
+            android:id="@+id/questionS5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionS4"
+            android:text="question1"
+            android:textColor="@color/white"
+            android:textSize="20dp"  />
+
+        <TextView
+            android:id="@+id/questionS6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionS5"
+            android:text="question1"
+            android:textColor="@color/white"
+            android:textSize="20dp"  />
+
+        <TextView
+            android:id="@+id/questionS7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionS6"
+            android:text="question1"
+            android:textColor="@color/white"
+            android:textSize="20dp"  />
+
+        <TextView
+            android:id="@+id/questionS8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionS7"
+            android:text="question1"
+            android:textColor="@color/white"
+            android:textSize="20dp"  />
+
+        <TextView
+            android:id="@+id/questionS9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionS8"
+            android:text="question1"
+            android:textColor="@color/white"
+            android:textSize="20dp"  />
+
+        <TextView
+            android:id="@+id/questionS10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionS9"
+            android:text="question1"
+            android:textColor="@color/white"
+            android:textSize="20dp"  />
+
+    </RelativeLayout>
+    </ScrollView>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

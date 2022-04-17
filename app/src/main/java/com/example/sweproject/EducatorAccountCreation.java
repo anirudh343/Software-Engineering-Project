@@ -62,7 +62,7 @@ public class EducatorAccountCreation extends AppCompatActivity implements Adapte
                 }
 
                  dataBaseHelper.addUser(false, temp);
-                 Toast.makeText(EducatorAccountCreation.this, "Login vvccessful", Toast.LENGTH_SHORT).show();
+                 Toast.makeText(EducatorAccountCreation.this, "Login successful", Toast.LENGTH_SHORT).show();
 
 
                  //once educator account is created, go back to log in page
