@@ -1,7 +1,10 @@
 package com.example.sweproject;
 
+import static java.security.AccessController.getContext;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -13,11 +16,15 @@ import java.io.IOException;
 
 import androidx.annotation.Nullable;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataBase extends SQLiteOpenHelper {
 
+    public boolean initialize = false;
+    ArrayList<String[]> lst;
     public static final String STUDENT_TABLE = "STUDENT_TABLE";
     public static final String STUDENT_COLUMN_STUDENT_USERNAME = "STUDENT_USERNAME";
     public static final String TEACHER_COLUMN_PASSWORD = "PASSWORD";
@@ -58,40 +65,33 @@ public class DataBase extends SQLiteOpenHelper {
         db.execSQL(createPerformanceTableString);
 
 
-        String File_path = "/Users/meghan.ka/Downloads/Questions.csv"; //CHANGE ME!
+        //String File_path = "C:\\Users\\aniru\\OneDrive\\Desktop\\UF\\CEN_3031\\Questions.csv"; //CHANGE ME!
 
-        String line = "";
-        String splitBy = ",";
-        try
-        {
-            BufferedReader br = new BufferedReader(new FileReader(File_path));
-            while ((line = br.readLine()) != null)   //returns a Boolean value
-            {
-                String[] question = line.split(splitBy);
-                question[0] = question[0].replace('&', ',');// use comma as separator
-                //System.out.println("[Subject" + question[0] + ", Grade= " + question[1] + ", Question=" + question[2] + ", Correct=" + question[3] + ", Incorrect1= "
-                //       + question[4] + ",Incorrect 2= " + question[5] + ",Incorrect 3= " + question[6] + ",Standard= " + question[7]+"]");
+        //ArrayList<String[]> lst = csv_parser(File_path);
 
-                ContentValues cv = new ContentValues();
-                cv.put(QUESTION_COLUMN_QUESTION, question[2]);
-                cv.put(QUESTION_COLUMN_SUBJECT, question[0]);
-                cv.put(QUESTION_COLUMN_CORRECT_ANSWER, question[3]);
-                cv.put(QUESTION_COLUMN_WRONG_ANSWER_1, question[4]);
-                cv.put(QUESTION_COLUMN_WRONG_ANSWER_2, question[5]);
-                cv.put(QUESTION_COLUMN_WRONG_ANSWER_3, question[6]);
-                cv.put(QUESTION_COLUMN_STANDARD, question[7]);
-                cv.put(QUESTION_COLUMN_GRADE, Integer.parseInt(question[1]));
-                long insert = db.insert(QUESTION_TABLE, null, cv);
+        Log.v("message", "Number of tuples: " + String.valueOf(lst.size()));
 
-                if (insert == -1){
-                    Log.i("message", "Insertion Error");
-                }
+        for (String[] question: lst){
+            ContentValues cv = new ContentValues();
+            cv.put(QUESTION_COLUMN_QUESTION, question[2]);
+            cv.put(QUESTION_COLUMN_SUBJECT, question[0]);
+            cv.put(QUESTION_COLUMN_CORRECT_ANSWER, question[3]);
+            cv.put(QUESTION_COLUMN_WRONG_ANSWER_1, question[4]);
+            cv.put(QUESTION_COLUMN_WRONG_ANSWER_2, question[5]);
+            cv.put(QUESTION_COLUMN_WRONG_ANSWER_3, question[6]);
+            cv.put(QUESTION_COLUMN_STANDARD, question[7]);
+            cv.put(QUESTION_COLUMN_GRADE, Integer.parseInt(question[1]));
+            long insert = db.insert(QUESTION_TABLE, null, cv);
+
+            if (insert == -1){
+                Log.v("message", "Insertion Error");
             }
         }
-        catch (IOException e)
+        //}
+        /*catch (IOException e)
         {
             e.printStackTrace();
-        }
+        }*/
 
 
 
@@ -275,17 +275,21 @@ public class DataBase extends SQLiteOpenHelper {
     //Now returns 1 random question per standard
     public List<question> getrandQuestions(int grade, String subject)
     {
-
         List<question> returnList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-
         //look for all standards in the subject/grade
-        String query = "SELECT * FROM QUESTION_TABLE ORDER BY random()";
+        String query = "SELECT * FROM QUESTION_TABLE"; // +ORDER BY random()
         Cursor cursor = db.rawQuery(query,null);
 
         //populate a list with all the standards in the subject/grade
         List<String> applicable_standards = new ArrayList<String>();
+        if (cursor.getCount() == 0)
+        {
+            Log.v("message", "mmmmm");
+        }
+        //Log.v("message", "mmmmm");
         while(cursor.moveToNext()){
+            Log.v("message", "mmmmm");
             if (cursor.getInt(2) == grade && cursor.getString(1).equals(subject)) {
                 String inside = "question from table: " + cursor.getString(3);
                 Log.i("message", inside);
@@ -351,5 +355,31 @@ public class DataBase extends SQLiteOpenHelper {
         db.close();
         return returnList;
     }
+
+    /*public static ArrayList<String[]> csv_parser (String File_path) {
+
+        String line = "";
+        String splitBy = ",";
+        ArrayList<String[]> toret = new ArrayList<>();
+        Log.v("message", "Testing if entered parser function");
+        try
+        {
+            BufferedReader br = new BufferedReader(new FileReader(File_path));
+            while ((line = br.readLine()) != null)   //returns a Boolean value
+            {
+                String[] question = line.split(splitBy);
+                question[2] = question[2].replace('&', ',');// use comma as separator
+
+                toret.add(question);
+            }
+        }
+        catch (IOException e)
+        {
+            Log.v("message", "Testing if failed!");
+            e.printStackTrace();
+        }
+
+        return toret;
+    }*/
 
 }
