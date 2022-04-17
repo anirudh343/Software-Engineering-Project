@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -45,9 +46,10 @@ public class ManageStudentsPage extends AppCompatActivity {
                 //adding educator to database
                 dataBaseHelper.addUser(true, temp);
 
-                boolean check = dataBaseHelper.validateUser(userN, userP, false);
 
-                if(check){
+                int check = dataBaseHelper.validateUser(userN, userP, false);
+
+                if(check > 0){
                     Toast.makeText(ManageStudentsPage.this, "Student Added", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(ManageStudentsPage.this, "Student Not Added", Toast.LENGTH_SHORT).show();

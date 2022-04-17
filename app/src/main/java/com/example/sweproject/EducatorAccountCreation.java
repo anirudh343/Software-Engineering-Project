@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class EducatorAccountCreation extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -46,7 +54,15 @@ public class EducatorAccountCreation extends AppCompatActivity implements Adapte
                  User temp = new User(userN, userP, gradeInt, editT);
                  //gradeLevel = gradeInt;
                  //adding educator to database
+                if (dataBaseHelper.initialize == false)
+                {
+                    InputStream in = getResources().openRawResource(R.raw.questions);
+                    dataBaseHelper.lst = csv_parser(in);
+                    dataBaseHelper.initialize = true;
+                }
+
                  dataBaseHelper.addUser(false, temp);
+                 Toast.makeText(EducatorAccountCreation.this, "Login vvccessful", Toast.LENGTH_SHORT).show();
 
 
                  //once educator account is created, go back to log in page
@@ -81,5 +97,31 @@ public class EducatorAccountCreation extends AppCompatActivity implements Adapte
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    public static ArrayList<String[]> csv_parser (InputStream in) {
+
+        String line = "";
+        String splitBy = ",";
+        ArrayList<String[]> toret = new ArrayList<>();
+        Log.v("message", "Testing if entered parser function");
+        try
+        {
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            while ((line = br.readLine()) != null)   //returns a Boolean value
+            {
+                String[] question = line.split(splitBy);
+                question[2] = question[2].replace('&', ',');// use comma as separator
+
+                toret.add(question);
+            }
+        }
+        catch (IOException e)
+        {
+            Log.v("message", "Testing if failed!");
+            e.printStackTrace();
+        }
+
+        return toret;
     }
 }
