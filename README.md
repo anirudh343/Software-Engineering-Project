@@ -14,6 +14,6 @@ When students log in, they have the option of taking both Science and Math quizz
 
 # Installation
 
-> `git clone https://github.com/DeyMoinak/Software-Engineering-Project`
+`git clone https://github.com/DeyMoinak/Software-Engineering-Project`
 
 This will install "from source" in the android studio environment. From here it can be ran on the Pixel 3a virtual device running the R system image. 
