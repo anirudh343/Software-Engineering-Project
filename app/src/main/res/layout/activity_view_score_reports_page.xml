@@ -25,5 +25,37 @@
             android:textColor="@color/white"
             android:textSize="30dp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/usernameEdu"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"
+
+            android:text="Reports" />
+
+        <EditText
+            android:id="@+id/usernameEdu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint ="Enter your username"
+            android:textColorHint="@color/white"
+            android:layout_below="@id/Enter"
+
+            />
+
+        <Button
+            android:id="@+id/Enter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_below="@id/textManageStudents"/>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

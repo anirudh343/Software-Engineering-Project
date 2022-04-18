@@ -40,7 +40,7 @@ public class EducatorAccountCreation extends AppCompatActivity implements Adapte
 
                  DataBase dataBaseHelper = new DataBase(EducatorAccountCreation.this);
                  TextView edit = (TextView) findViewById(R.id.enterName); //get name from user input
-                 String editT = edit.toString();
+                 String editT = edit.getText().toString();
                  TextView username = (TextView) findViewById(R.id.setEducatorUsername);
                  TextView password = (TextView) findViewById(R.id.setEducatorPassword);
                  String userN = username.getText().toString();

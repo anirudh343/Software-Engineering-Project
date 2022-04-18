@@ -22,6 +22,7 @@ import com.google.android.material.button.MaterialButton;
 public class MainActivity extends AppCompatActivity {
     //@Override
     public static int gradeLevel = 0;
+    public static String Studentusername = "";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 int checkStudent = dataBaseHelper.validateUser(username.getText().toString(), password.getText().toString(), false);
 
                 if(checkStudent != -1){
+                    MainActivity.Studentusername = username.getText().toString();
                     MainActivity.gradeLevel = checkStudent;
                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this, StudentHomepage.class));

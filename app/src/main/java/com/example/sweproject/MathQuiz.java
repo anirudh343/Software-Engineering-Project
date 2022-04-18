@@ -16,11 +16,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MathQuiz extends AppCompatActivity {
@@ -36,8 +38,6 @@ public class MathQuiz extends AppCompatActivity {
         List<question> returnList = dataBaseHelper.getrandQuestions(MainActivity.gradeLevel, "Math");
 
         TextView math = (TextView)findViewById(R.id.questionsMath);
-
-
         TextView math2 = (TextView)findViewById(R.id.question2);
         TextView math3 = (TextView)findViewById(R.id.question3);
         TextView math4 = (TextView)findViewById(R.id.question4);
@@ -106,6 +106,7 @@ public class MathQuiz extends AppCompatActivity {
 
 
 
+
         String q7w1 = returnList.get(6).getWrong_answer1();
         String q7w2 = returnList.get(6).getWrong_answer2();
         String q7w3 = returnList.get(6).getWrong_answer3();
@@ -139,6 +140,189 @@ public class MathQuiz extends AppCompatActivity {
         String question10 = returnList.get(9).getQuestion() + "\n" + q10w1 +"\n" + q10w2 +"\n" + q10w3 +"\n" + q10r + "\n";
 
         math10.setText(question10);
+
+        List<String> answerHolder = new ArrayList<String>();
+
+/**
+        TextView field1 = (TextView)findViewById(R.id.answerfield1);
+        TextView field2 = (TextView)findViewById(R.id.answerfield2);
+        TextView field3 = (TextView)findViewById(R.id.answerfield3);
+        TextView field4 = (TextView)findViewById(R.id.answerfield4);
+        TextView field5 = (TextView)findViewById(R.id.answerfield5);
+        TextView field6 = (TextView)findViewById(R.id.answerfield6);
+        TextView field7 = (TextView)findViewById(R.id.answerfield7);
+        TextView field8 = (TextView)findViewById(R.id.answerfield8);
+        TextView field9 = (TextView)findViewById(R.id.answerfield9);
+        TextView field10 = (TextView)findViewById(R.id.answerfield10);
+
+
+
+        Button answerB1 = (Button)findViewById(R.id.Answer1);
+        answerB1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView answer1 = (TextView)findViewById(R.id.answerfield1);
+                answerHolder.add(field1.toString());
+                Log.i("Message", "Answer holder 1" + answerHolder.get(0));
+
+            }
+        });
+
+
+        Button answerB2 = (Button)findViewById(R.id.Answer2);
+        answerB2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView answer2 = (TextView)findViewById(R.id.answerfield2);
+                answerHolder.add(field2.toString());
+
+            }
+        });
+
+        Button answerB3 = (Button)findViewById(R.id.Answer3);
+        answerB3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView answer3 = (TextView)findViewById(R.id.answerfield3);
+                answerHolder.add(field3.toString());
+
+            }
+        });
+
+
+        Button answerB4 = (Button)findViewById(R.id.Answer4);
+        answerB4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView answer4 = (TextView)findViewById(R.id.answerfield4);
+                answerHolder.add(field4.toString());
+
+            }
+        });
+
+        Button answerB5 = (Button)findViewById(R.id.Answer5);
+        answerB5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView answer5 = (TextView)findViewById(R.id.answerfield5);
+                answerHolder.add(field5.toString());
+
+            }
+        });
+
+
+        Button answerB6 = (Button)findViewById(R.id.Answer6);
+        answerB6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView answer6 = (TextView)findViewById(R.id.answerfield6);
+                answerHolder.add(field6.toString());
+
+            }
+        });
+
+
+        Button answerB7 = (Button)findViewById(R.id.Answer7);
+        answerB7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView answer7 = (TextView)findViewById(R.id.answerfield7);
+                answerHolder.add(field7.toString());
+
+            }
+        });
+
+
+        Button answerB8 = (Button)findViewById(R.id.Answer8);
+        answerB8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView answer8 = (TextView)findViewById(R.id.answerfield8);
+                answerHolder.add(field8.toString());
+
+            }
+        });
+
+
+        Button answerB9 = (Button)findViewById(R.id.Answer9);
+        answerB9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView answer9 = (TextView)findViewById(R.id.answerfield9);
+                answerHolder.add(field9.toString());
+
+            }
+        });
+
+
+
+        Button answerB10 = (Button)findViewById(R.id.Answer1);
+        answerB10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView answer10 = (TextView)findViewById(R.id.answerfield10);
+                answerHolder.add(field10.toString());
+
+            }
+        });
+
+
+
+**/
+
+        Button Finish = (Button)findViewById(R.id.FinishMath);
+        Finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText field1 = (EditText) findViewById(R.id.answerfield1);
+
+                TextView field2 = (TextView)findViewById(R.id.answerfield2);
+                TextView field3 = (TextView)findViewById(R.id.answerfield3);
+                TextView field4 = (TextView)findViewById(R.id.answerfield4);
+                TextView field5 = (TextView)findViewById(R.id.answerfield5);
+                TextView field6 = (TextView)findViewById(R.id.answerfield6);
+                TextView field7 = (TextView)findViewById(R.id.answerfield7);
+                TextView field8 = (TextView)findViewById(R.id.answerfield8);
+                TextView field9 = (TextView)findViewById(R.id.answerfield9);
+                TextView field10 = (TextView)findViewById(R.id.answerfield10);
+
+                List<String> answerHolder = new ArrayList<String>();
+                answerHolder.add(field1.getText().toString());
+                answerHolder.add(field2.getText().toString());
+                answerHolder.add(field3.getText().toString());
+                answerHolder.add(field4.getText().toString());
+                answerHolder.add(field5.getText().toString());
+                answerHolder.add(field6.getText().toString());
+                answerHolder.add(field7.getText().toString());
+                answerHolder.add(field8.getText().toString());
+                answerHolder.add(field9.getText().toString());
+                answerHolder.add(field10.getText().toString());
+
+              //  Log.i("message", "list count: " + answerHolder.size());
+                int count = 0;
+                for(int i = 0; i < answerHolder.size(); i++){
+                    if(answerHolder.get(i).equals("D") || answerHolder.get(i).equals("d")){
+                        count++;
+                    }
+                }
+                float score = count/10.0f;
+                boolean add = dataBaseHelper.addPerformance(MainActivity.Studentusername, score);
+                if(add){
+                    Log.i("message", "true");
+                }else{
+                    Log.i("message", "false");
+                }
+               /// Log.i("message", "Score: " + score);
+               // Log.i("message", "count: " + count);
+
+
+            }
+
+
+        });
+
+
+
 
 
 
