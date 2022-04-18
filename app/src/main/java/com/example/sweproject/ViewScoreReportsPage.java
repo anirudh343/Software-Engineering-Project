@@ -27,13 +27,16 @@ public class ViewScoreReportsPage extends AppCompatActivity {
                 TextView eduUsername = (TextView)findViewById(R.id.usernameEdu);
                 String username = eduUsername.getText().toString();
 
-                DataBase dataBaseHelper = new DataBase(ViewScoreReportsPage.this);
-                List<scoreReport> reportsList = dataBaseHelper.getReportsForEachTeacher(username);
+               // DataBase dataBaseHelper = new DataBase(ViewScoreReportsPage.this);
+              //  List<scoreReport> reportsList = dataBaseHelper.getReportsForEachTeacher(username);
 
 
                 TextView reports = (TextView)findViewById(R.id.Report);
+                //username, name, score
+                String studentReport = "Math Assessment Grade 1 "+ "\n" +"Username: StudentExample" + "\n" +  "Name: Example Name" +"\n" + "Math Score: " + "80%";
 
-                reports.setText(reportsList.get(0).getStudent_name());
+                reports.setText(studentReport);
+               // reports.setText(reportsList.get(0).getStudent_name());
 
             }
         });
