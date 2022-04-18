@@ -21,7 +21,8 @@ import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
     //@Override
-    public static int gradeLevel = 2;
+    public static int gradeLevel = 0;
+    public static String Studentusername = "";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -80,8 +81,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 DataBase dataBaseHelper = new DataBase(MainActivity.this);
 
-                gradeLevel = dataBaseHelper.validateUser(username.getText().toString(), password.getText().toString(), false);
-                if(gradeLevel != -1){
+                int checkStudent = dataBaseHelper.validateUser(username.getText().toString(), password.getText().toString(), false);
+
+                if(checkStudent != -1){
+                    MainActivity.Studentusername = username.getText().toString();
+                    MainActivity.gradeLevel = checkStudent;
                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this, StudentHomepage.class));
                 }else{
@@ -106,10 +110,9 @@ public class MainActivity extends AppCompatActivity {
                 DataBase dataBaseHelper = new DataBase(MainActivity.this);
 
                 //this is causing an error
-                //is it still?
                 int check = dataBaseHelper.validateUser(edusername.getText().toString(), edpassword.getText().toString(), true);
 
-                if (check > 0) {
+                if (check != -1) {
                     startActivity(new Intent(MainActivity.this, EducatorHomepage.class));
                 }
 
