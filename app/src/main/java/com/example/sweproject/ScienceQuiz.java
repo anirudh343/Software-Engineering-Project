@@ -131,17 +131,17 @@ public class ScienceQuiz extends AppCompatActivity {
         Finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText field1 = (EditText) findViewById(R.id.answerfield1);
+                EditText field1 = (EditText) findViewById(R.id.sciencefield1);
 
-                TextView field2 = (TextView) findViewById(R.id.answerfield2);
-                TextView field3 = (TextView) findViewById(R.id.answerfield3);
-                TextView field4 = (TextView) findViewById(R.id.answerfield4);
-                TextView field5 = (TextView) findViewById(R.id.answerfield5);
-                TextView field6 = (TextView) findViewById(R.id.answerfield6);
-                TextView field7 = (TextView) findViewById(R.id.answerfield7);
-                TextView field8 = (TextView) findViewById(R.id.answerfield8);
-                TextView field9 = (TextView) findViewById(R.id.answerfield9);
-                TextView field10 = (TextView) findViewById(R.id.answerfield10);
+                TextView field2 = (TextView) findViewById(R.id.sciencefield2);
+                TextView field3 = (TextView) findViewById(R.id.sciencefield3);
+                TextView field4 = (TextView) findViewById(R.id.sciencefield4);
+                TextView field5 = (TextView) findViewById(R.id.sciencefield5);
+                TextView field6 = (TextView) findViewById(R.id.sciencefield6);
+                TextView field7 = (TextView) findViewById(R.id.sciencefield7);
+                TextView field8 = (TextView) findViewById(R.id.sciencefield7);
+                TextView field9 = (TextView) findViewById(R.id.sciencefield9);
+                TextView field10 = (TextView) findViewById(R.id.sciencefield10);
 
                 List<String> answerHolder = new ArrayList<String>();
                 answerHolder.add(field1.getText().toString());
