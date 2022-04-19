@@ -10,10 +10,10 @@ This app supports teachers in assessing the following grades/subjects
 - 5th grade Math and Science
 
 Upon logging in, teachers are able to declare which subject and grade they teach. From there they can add students to their class, and see how their students are performing. 
-When students log in, they have the option of taking both Science and Math quizzes designed to test their knowledge and provide immediate feedback on their capability in different education standards. Their performance is saved until reassesment is required. 
+When students log in, they have the option of taking both Science and Math quizzes designed to test their knowledge and provide immediate feedback on their capability in different education standards. Their performance is saved until reassessment is required. 
 
 # Installation
 
 `git clone https://github.com/DeyMoinak/Software-Engineering-Project`
 
-This will install "from source" in the android studio environment. From here it can be ran on the Pixel 3a virtual device running the R system image. 
+This will install "from source" in the android studio environment. Upon cloning, the JDK does not default to the correct version. Follow the prompts to change it to the embedded JDK. From here it can be ran on the Pixel 3a virtual device running the R system image. 
