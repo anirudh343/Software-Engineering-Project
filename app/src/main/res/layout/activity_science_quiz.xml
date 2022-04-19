@@ -253,6 +253,17 @@
                     android:textColor="@color/white"
                     android:textSize="20dp" />
 
+                <TextView
+                    android:id="@+id/sciencescore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/FinishScience"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    android:text="Score Here"
+                    android:textStyle="bold"/>
+
+
 
             </RelativeLayout>
         </ScrollView>
