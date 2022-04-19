@@ -30,13 +30,13 @@ public class ManageStudentsPage extends AppCompatActivity {
 
 
                 TextView edit = (TextView) findViewById(R.id.enterStudentName); //get name from user input
-                String editT = edit.toString();
+                String editT = edit.getText().toString();
                 TextView username = (TextView) findViewById(R.id.setstudentUser);
                 TextView password = (TextView) findViewById(R.id.setStudentPassword);
                 String userN = username.getText().toString();
                 String userP = password.getText().toString();
                 TextView teacherUser = (TextView) findViewById(R.id.enterteacheruser);
-                String teacherString = teacherUser.toString();
+                String teacherString = teacherUser.getText().toString();
 
 
                 //creating student

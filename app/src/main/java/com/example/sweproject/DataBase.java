@@ -58,7 +58,7 @@ public class DataBase extends SQLiteOpenHelper {
         String createQuestionTableString = "CREATE TABLE " + QUESTION_TABLE + " (" + QUESTION_COLUMN_QUESTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + QUESTION_COLUMN_SUBJECT + " TEXT, " + QUESTION_COLUMN_GRADE + " INTEGER, " + QUESTION_COLUMN_QUESTION + " TEXT, " + QUESTION_COLUMN_CORRECT_ANSWER + " TEXT, " + QUESTION_COLUMN_WRONG_ANSWER_1 + " TEXT, " + QUESTION_COLUMN_WRONG_ANSWER_2 + " TEXT, " + QUESTION_COLUMN_WRONG_ANSWER_3 + " TEXT, " + QUESTION_COLUMN_STANDARD + " TEXT)";
         String createTeacherTableString = "CREATE TABLE " + TEACHER_TABLE + " (" + TEACHER_COLUMN_TEACHER_USERNAME + " TEXT PRIMARY KEY, " + TEACHER_COLUMN_PASSWORD + " TEXT, " + TEACHER_COLUMN_GRADE + " INTEGER, " + TEACHER_COLUMN_ACTUAL_NAME + " TEXT)";
         String createStudentTableString = "CREATE TABLE " + STUDENT_TABLE + " (" + STUDENT_COLUMN_STUDENT_USERNAME + " TEXT PRIMARY KEY, " + STUDENT_COLUMN_PASSWORD + " TEXT, " + STUDENT_COLUMN_TEACHER + " TEXT, " + STUDENT_COLUMN_GRADE + " INTEGER, " + STUDENT_COLUMN_ACTUAL_NAME + " TEXT, " + "FOREIGN KEY(" + STUDENT_COLUMN_TEACHER + ") REFERENCES " + TEACHER_TABLE + "(" + TEACHER_COLUMN_TEACHER_USERNAME + ") )";
-        String createPerformanceTableString = "CREATE TABLE PERFORMANCE_TABLE (TEACHER STRING, STUDENT STRING, PERFORMANCE REAL, FOREIGN KEY(TEACHER) REFERENCES TEACHER_TABLE(TEACHER_USERNAME), FOREIGN KEY(STUDENT) REFERENCES STUDENT_TABLE(STUDENT_USERNAME))";
+        String createPerformanceTableString = "CREATE TABLE PERFORMANCE_TABLE (TEACHER STRING, STUDENT STRING, SUBJECT STRING, PERFORMANCE REAL, FOREIGN KEY(TEACHER) REFERENCES TEACHER_TABLE(TEACHER_USERNAME), FOREIGN KEY(STUDENT) REFERENCES STUDENT_TABLE(STUDENT_USERNAME))";
         db.execSQL(createQuestionTableString);
         db.execSQL(createTeacherTableString);
         db.execSQL(createStudentTableString);
@@ -190,7 +190,7 @@ public class DataBase extends SQLiteOpenHelper {
     }
 
     //add performance score if no score previously saved
-    public boolean addPerformance(String student_username, float score)
+    public boolean addPerformance(String student_username, float score, String subject)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -213,6 +213,7 @@ public class DataBase extends SQLiteOpenHelper {
         cv.put("TEACHER", teacher_user);
         cv.put("STUDENT", student_username);
         cv.put("PERFORMANCE", score);
+        cv.put("SUBJECT", subject);
 
         long insert1 = db.insert("PERFORMANCE_TABLE", null, cv);
 
@@ -229,14 +230,14 @@ public class DataBase extends SQLiteOpenHelper {
     }
 
     //changes performance score if student is retaking assessment
-    public boolean changePerformance(String student_username, float score)
+    public boolean changePerformance(String student_username, float score, String subject)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put("PERFORMANCE", score);
 
-        long insert1 = db.update("PERFORMANCE_TABLE", cv, "PERFORMANCE_TABLE.STUDENT=?", new String[]{student_username});
+        long insert1 = db.update("PERFORMANCE_TABLE", cv, "PERFORMANCE_TABLE.STUDENT=? AND PERFORMANCE_TABLE.SUBJECT=?", new String[]{student_username,subject});
 
         db.close();
         if (insert1 == -1)
@@ -250,11 +251,11 @@ public class DataBase extends SQLiteOpenHelper {
 
     }
 
-    public boolean checkAssessmentTaken(String student_username)
+    public boolean checkAssessmentTaken(String student_username, String subject)
     {
         SQLiteDatabase db = this.getReadableDatabase();
         String teacher_user = "";
-        String query = "SELECT * FROM PERFORMANCE_TABLE WHERE STUDENT_TABLE.STUDENT_USERNAME = '" + student_username + "'";
+        String query = "SELECT * FROM PERFORMANCE_TABLE WHERE PERFORMANCE_TABLE.STUDENT = '" + student_username + "' AND PERFORMANCE_TABLE.SUBJECT = '" + subject + "'";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.getCount() == 1)
         {
@@ -329,7 +330,7 @@ public class DataBase extends SQLiteOpenHelper {
     {
         List<scoreReport> returnList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT DISTINCT PERFORMANCE_TABLE.STUDENT, STUDENT_TABLE.ACTUAL_STUDENT_NAME , PERFORMANCE_TABLE.PERFORMANCE FROM PERFORMANCE_TABLE, STUDENT_TABLE WHERE PERFORMANCE_TABLE.STUDENT = STUDENT_TABLE.STUDENT_USERNAME AND PERFORMANCE_TABLE.TEACHER = '" + teacher_username + "' ORDER BY STUDENT_TABLE.ACTUAL_STUDENT_NAME";
+        String query = "SELECT DISTINCT PERFORMANCE_TABLE.STUDENT, STUDENT_TABLE.ACTUAL_STUDENT_NAME , PERFORMANCE_TABLE.PERFORMANCE, PERFORMANCE_TABLE.SUBJECT FROM PERFORMANCE_TABLE, STUDENT_TABLE WHERE PERFORMANCE_TABLE.STUDENT = STUDENT_TABLE.STUDENT_USERNAME AND PERFORMANCE_TABLE.TEACHER = '" + teacher_username + "' ORDER BY STUDENT_TABLE.ACTUAL_STUDENT_NAME";
 
         Cursor cursor = db.rawQuery(query,null);
 
@@ -340,8 +341,9 @@ public class DataBase extends SQLiteOpenHelper {
                 String student_user = cursor.getString(0);
                 String student_name = cursor.getString(1);
                 float score = cursor.getFloat(2);
+                String subject = cursor.getString(3);
 
-                scoreReport report = new scoreReport(student_user, student_name, score);
+                scoreReport report = new scoreReport(student_user, student_name, score, subject);
                 returnList.add(report);
             }
             while(cursor.moveToNext());

@@ -29,7 +29,6 @@ public class EducatorAccountCreation extends AppCompatActivity implements Adapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_educator_account_creation);
 
-
         MaterialButton createAcc = (MaterialButton)findViewById(R.id.setEducatorLogin);
         createAcc.setOnClickListener(new View.OnClickListener() {
             @Override

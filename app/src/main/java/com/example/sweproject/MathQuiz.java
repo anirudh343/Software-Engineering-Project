@@ -306,7 +306,15 @@ public class MathQuiz extends AppCompatActivity {
                     }
                 }
                 float score = count/10.0f;
-                boolean add = dataBaseHelper.addPerformance(MainActivity.Studentusername, score);
+                boolean add = false;
+                if (dataBaseHelper.checkAssessmentTaken(MainActivity.Studentusername, "Math"))
+                {
+                    add = dataBaseHelper.changePerformance(MainActivity.Studentusername, score, "Math");
+                }
+                else
+                {
+                    add = dataBaseHelper.addPerformance(MainActivity.Studentusername, score, "Math");
+                }
                 if(add){
                     Log.i("message", "true");
                 }else{
