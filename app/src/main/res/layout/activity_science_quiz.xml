@@ -11,248 +11,261 @@
         android:layout_height="match_parent"
         android:background="@drawable/background"
         tools:context=".StudentHomepage" >
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/ScienceQuiz"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="50dp"
-            android:gravity="center"
-            android:text="Science Quiz"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/questionS1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ScienceQuiz"
-            android:text="question1"
-            android:textColor="@color/white"
-            android:textSize="20dp"  />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/questionS2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sciencefield1"
-            android:text="question2"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/ScienceQuiz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:gravity="center"
+                    android:text="Science Quiz"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/questionS3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sciencefield2"
-            android:text="question3"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/questionS1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ScienceQuiz"
+                    android:text="question1"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/questionS4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sciencefield3"
-            android:text="question4"
-            android:textColor="@color/white"
-            android:textSize="20dp"  />
+                <TextView
+                    android:id="@+id/questionS2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sciencefield1"
+                    android:text="question2"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/questionS5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sciencefield4"
-            android:text="question5"
-            android:textColor="@color/white"
-            android:textSize="20dp"  />
+                <TextView
+                    android:id="@+id/questionS3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sciencefield2"
+                    android:text="question3"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/questionS6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sciencefield5"
-            android:text="question6"
-            android:textColor="@color/white"
-            android:textSize="20dp"  />
+                <TextView
+                    android:id="@+id/questionS4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sciencefield3"
+                    android:text="question4"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/questionS7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sciencefield6"
-            android:text="question7"
-            android:textColor="@color/white"
-            android:textSize="20dp"  />
+                <TextView
+                    android:id="@+id/questionS5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sciencefield4"
+                    android:text="question5"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/questionS8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sciencefield7"
-            android:text="question8"
-            android:textColor="@color/white"
-            android:textSize="20dp"  />
+                <TextView
+                    android:id="@+id/questionS6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sciencefield5"
+                    android:text="question6"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/questionS9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sciencefield8"
-            android:text="question9"
-            android:textColor="@color/white"
-            android:textSize="20dp"  />
+                <TextView
+                    android:id="@+id/questionS7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sciencefield6"
+                    android:text="question7"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/questionS10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sciencefield9"
-            android:text="question10"
-            android:textColor="@color/white"
-            android:textSize="20dp"  />
+                <TextView
+                    android:id="@+id/questionS8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sciencefield7"
+                    android:text="question8"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/sciencefield9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/questionS9"
-            android:ems="10"
-            android:hint="Enter A, B, C, or D"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/questionS9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sciencefield8"
+                    android:text="question9"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/sciencefield8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/questionS8"
-            android:ems="10"
-            android:hint="Enter A, B, C, or D"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/questionS10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sciencefield9"
+                    android:text="question10"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/sciencefield7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/questionS7"
-            android:ems="10"
-            android:hint="Enter A, B, C, or D"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+                <EditText
+                    android:id="@+id/sciencefield9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/questionS9"
+                    android:ems="10"
+                    android:hint="Enter A, B, C, or D"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/sciencefield6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/questionS6"
-            android:ems="10"
-            android:hint="Enter A, B, C, or D"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+                <EditText
+                    android:id="@+id/sciencefield8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/questionS8"
+                    android:ems="10"
+                    android:hint="Enter A, B, C, or D"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/sciencefield5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/questionS5"
-            android:ems="10"
-            android:hint="Enter A, B, C, or D"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+                <EditText
+                    android:id="@+id/sciencefield7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/questionS7"
+                    android:ems="10"
+                    android:hint="Enter A, B, C, or D"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/sciencefield4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/questionS4"
-            android:ems="10"
-            android:hint="Enter A, B, C, or D"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+                <EditText
+                    android:id="@+id/sciencefield6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/questionS6"
+                    android:ems="10"
+                    android:hint="Enter A, B, C, or D"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/sciencefield3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/questionS3"
-            android:ems="10"
-            android:hint="Enter A, B, C, or D"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+                <EditText
+                    android:id="@+id/sciencefield5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/questionS5"
+                    android:ems="10"
+                    android:hint="Enter A, B, C, or D"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/sciencefield2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/questionS2"
-            android:ems="10"
-            android:hint="Enter A, B, C, or D"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+                <EditText
+                    android:id="@+id/sciencefield4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/questionS4"
+                    android:ems="10"
+                    android:hint="Enter A, B, C, or D"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/sciencefield1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/questionS1"
-            android:ems="10"
-            android:hint="Enter A, B, C, or D"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
-        <EditText
-            android:id="@+id/sciencefield10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/questionS10"
-            android:ems="10"
-            android:hint="Enter A, B, C, or D"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20dp" />
+                <EditText
+                    android:id="@+id/sciencefield3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/questionS3"
+                    android:ems="10"
+                    android:hint="Enter A, B, C, or D"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp" />
 
-        <Button
-            android:id="@+id/FinishScience"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/sciencefield10"
-            android:text="Finish"
-            android:textColor="@color/white"
-            android:textSize="20dp"  />
+                <EditText
+                    android:id="@+id/sciencefield2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/questionS2"
+                    android:ems="10"
+                    android:hint="Enter A, B, C, or D"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/sciencefield1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/questionS1"
+                    android:ems="10"
+                    android:hint="Enter A, B, C, or D"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/sciencefield10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/questionS10"
+                    android:ems="10"
+                    android:hint="Enter A, B, C, or D"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/FinishScience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sciencefield10"
+                    android:text="Finish"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/sciencescore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/FinishScience"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    android:text="Score Here"
+                    android:textStyle="bold"/>
 
 
-    </RelativeLayout>
-    </ScrollView>
-    </RelativeLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+        </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
